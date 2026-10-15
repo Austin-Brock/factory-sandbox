@@ -7,7 +7,7 @@ describe('App', () => {
   it('shows an empty state', () => {
     render(<App />)
     expect(screen.getByText('Nothing to do yet.')).toBeInTheDocument()
-    expect(screen.getByText('0 remaining')).toBeInTheDocument()
+    expect(screen.getByText('0 remaining, 0 completed')).toBeInTheDocument()
   })
 
   it('adds a to-do', async () => {
@@ -15,7 +15,7 @@ describe('App', () => {
     render(<App />)
     await user.type(screen.getByLabelText('New to-do'), 'Buy milk{Enter}')
     expect(screen.getByText('Buy milk')).toBeInTheDocument()
-    expect(screen.getByText('1 remaining')).toBeInTheDocument()
+    expect(screen.getByText('1 remaining, 0 completed')).toBeInTheDocument()
   })
 
   it('ignores blank input', async () => {
@@ -31,7 +31,7 @@ describe('App', () => {
     await user.type(screen.getByLabelText('New to-do'), 'Walk dog{Enter}')
     await user.click(screen.getByRole('checkbox'))
     expect(screen.getByRole('checkbox')).toBeChecked()
-    expect(screen.getByText('0 remaining')).toBeInTheDocument()
+    expect(screen.getByText('0 remaining, 1 completed')).toBeInTheDocument()
   })
 
   it('deletes a to-do', async () => {

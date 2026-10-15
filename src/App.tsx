@@ -26,12 +26,13 @@ function App() {
   }
 
   const remaining = todos.filter((todo) => !todo.done).length
+  const completed = todos.filter((todo) => todo.done).length
 
   return (
     <main className="app">
       <header>
         <h1>To-dos</h1>
-        <p className="count">{remaining} remaining</p>
+        <p className="count">{remaining} remaining, {completed} completed</p>
       </header>
       <TodoForm onAdd={addTodo} />
       <TodoList todos={todos} onToggle={toggleTodo} onDelete={deleteTodo} />
