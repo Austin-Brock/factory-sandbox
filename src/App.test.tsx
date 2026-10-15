@@ -4,6 +4,15 @@ import { describe, expect, it } from 'vitest'
 import App from './App'
 
 describe('App', () => {
+  it('blue button turns red on click', async () => {
+    const user = userEvent.setup();
+    render(<App />);
+    const btn = screen.getByTestId('top-left-button');
+    // initial color should be blue
+    expect(btn).toHaveAttribute('style', expect.stringContaining('background-color: blue'));
+    await user.click(btn);
+    expect(btn).toHaveAttribute('style', expect.stringContaining('background-color: red'));
+  });
   it('shows an empty state', () => {
     render(<App />)
     expect(screen.getByText('Nothing to do yet.')).toBeInTheDocument()
