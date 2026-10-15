@@ -11,6 +11,16 @@
   background: var(--bg);
 }
 
+/* Dark mode overrides */
+html.dark {
+  --bg: #121212;
+  --surface: #1e1e1e;
+  --text: #e0e0e0;
+  --muted: #a0a0a0;
+  --border: #333333;
+  --accent: #bb86fc;
+}
+
 * {
   box-sizing: border-box;
 }
